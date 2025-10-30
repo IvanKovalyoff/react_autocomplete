@@ -39,7 +39,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
 
       setFiltered(results);
       setIsOpen(true);
-      lastQueryRef.current = query;
+      lastQueryRef.current = normalized;
       setLoading(false);
     }, delay);
 
