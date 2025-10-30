@@ -22,7 +22,9 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
   const timeoutRef = useRef<number>();
 
   useEffect(() => {
-    if (query === lastQueryRef.current) {
+    const trimmed = query.trim().toLowerCase();
+
+    if (trimmed === lastQueryRef.current) {
       return;
     }
 
@@ -82,7 +84,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
       </div>
 
       {isOpen && (
-        <div className="dropdown-menu" role="menu" data-cy="suggestion-list">
+        <div className="dropdown-menu" role="menu" data-cy="suggestions-list">
           <div className="dropdown-content">
             {filtered.map(person => (
               <div
@@ -104,9 +106,9 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
             {noResults && (
               <div
                 className="notification is-danger is-light mt-2"
-                data-cy="no-suggestion-message"
+                data-cy="no-suggestions-message"
               >
-                <p className="has-text-danger">No matching suggestion</p>
+                <p className="has-text-danger">No matching suggestions</p>
               </div>
             )}
           </div>
